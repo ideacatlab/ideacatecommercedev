@@ -1,18 +1,19 @@
 <?php
-
 return [
 
     /*
     |--------------------------------------------------------------------------
-    | Default Mailer
+    | Mail Driver
     |--------------------------------------------------------------------------
     |
-    | This option controls the default mailer that is used to send any email
-    | messages sent by your application. Alternative mailers may be setup
-    | and used as needed; however, this mailer will be used by default.
+    | Laravel supports both SMTP and PHP's "mail" function as drivers for the
+    | sending of e-mail. You may specify which one you're using throughout
+    | your application here. By default, Laravel is setup for SMTP mail.
     |
-    */
-
+    | Supported: "smtp", "sendmail", "mailgun", "mandrill", "ses",
+    |            "sparkpost", "log", "array"
+    |
+     */
     'default' => env('MAIL_MAILER', 'smtp'),
 
     /*
@@ -42,7 +43,6 @@ return [
             'username' => env('MAIL_USERNAME'),
             'password' => env('MAIL_PASSWORD'),
             'timeout' => null,
-            'auth_mode' => null,
         ],
 
         'ses' => [
@@ -81,11 +81,11 @@ return [
     | the same address. Here, you may specify a name and address that is
     | used globally for all e-mails that are sent by your application.
     |
-    */
+     */
 
-    'from' => [
+    'from'       => [
         'address' => env('MAIL_FROM_ADDRESS', 'hello@example.com'),
-        'name' => env('MAIL_FROM_NAME', 'Example'),
+        'name'    => env('MAIL_FROM_NAME', 'Example'),
     ],
 
     /*
@@ -106,5 +106,4 @@ return [
             resource_path('views/vendor/mail'),
         ],
     ],
-
 ];

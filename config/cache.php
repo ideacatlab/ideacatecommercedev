@@ -13,6 +13,8 @@ return [
     | using this caching library. This connection is used when another is
     | not explicitly specified when executing a given caching function.
     |
+    | Supported: "apc", "array", "database", "file", "memcached", "redis"
+    |
     */
 
     'default' => env('CACHE_DRIVER', 'file'),
@@ -26,9 +28,6 @@ return [
     | well as their drivers. You may even define multiple stores for the
     | same cache driver to group types of items stored in your caches.
     |
-    | Supported drivers: "apc", "array", "database", "file",
-    |            "memcached", "redis", "dynamodb", "null"
-    |
     */
 
     'stores' => [
@@ -39,14 +38,12 @@ return [
 
         'array' => [
             'driver' => 'array',
-            'serialize' => false,
         ],
 
         'database' => [
             'driver' => 'database',
             'table' => 'cache',
             'connection' => null,
-            'lock_connection' => null,
         ],
 
         'file' => [
@@ -62,7 +59,7 @@ return [
                 env('MEMCACHED_PASSWORD'),
             ],
             'options' => [
-                // Memcached::OPT_CONNECT_TIMEOUT => 2000,
+                // Memcached::OPT_CONNECT_TIMEOUT  => 2000,
             ],
             'servers' => [
                 [
@@ -76,7 +73,6 @@ return [
         'redis' => [
             'driver' => 'redis',
             'connection' => 'cache',
-            'lock_connection' => 'default',
         ],
 
         'dynamodb' => [
@@ -101,6 +97,6 @@ return [
     |
     */
 
-    'prefix' => env('CACHE_PREFIX', Str::slug(env('APP_NAME', 'laravel'), '_').'_cache'),
+    'prefix' => env('CACHE_PREFIX', Str::slug(env('APP_NAME', 'Scart'), '_').'_cache'),
 
 ];
